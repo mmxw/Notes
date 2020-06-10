@@ -41,7 +41,18 @@ See a possible way of using Webpack with Grunt: https://github.com/webpack-contr
 ## Two possible solutions (re: althernative) 
 1. **adding react components in angular 1.x**
  (react2angular: https://github.com/coatue-oss/react2angular)
- <img src="./react2angular.png" />
+ 
+create React Component, expose it to Angular
+<img src="./react2angular.png" />
+ 
+then we can use it with Angular code: 
+ 
+```html
+<my-component
+  foo-bar="3"
+  baz="'baz'"
+></my-component>
+```
 
  **caveat**: The solution uses angular components, which don't seem to be what we used in ws/frontend? I haven't looked through all the code yet, but what we have seemed to be controllers and templates instead of components? (Correct me if I am wrong). If that's the case, don't worry. We can easily wrap controllers and templates into components: 
  <img src="./refactor-ng-controllers-templates-to-components.gif" />

@@ -8,7 +8,7 @@ Grunt and WebPack are not directly comparable, since they are technically differ
 - What it does (in the context of our project) is that it takes angular *modules* (the `module` in angular 1.x are not really modules in the ES6 sense...<sup>[1](#footnote1)</sup>), compiles, minifies, lints, and concatenates them in the right order into one big file; 
 
 - Reasons people replaced it:
-  - wanted specialized tools for generating build output (bundles). Mostly people use WebPack for this now
+  - wanted specialized tools for generating build output (bundles). Mostly people use Webpack for this now
   - people wanted simpler task runners: these people use npm scripts
   - people wanted more easily-customizable task runners that required fewer plugins: these people switched to **gulp**
 
@@ -40,7 +40,16 @@ Grunt and WebPack are not directly comparable, since they are technically differ
 ## Two possible solutions (re: althernative) 
 1. **adding react components in angular 1.x**
  (react2angular: https://github.com/coatue-oss/react2angular)
+ <img src="./react2angular.png" />
+
+ **caveat**: The solution uses angular components, which don't seem to be what we used in ws/frontend? I haven't looked through all the code yet, but what we have seemed to be controllers and templates instead of components? (Correct me if I am wrong). If that's the case, don't worry. We can easily wrap controllers and templates into components: 
+ <img src="./refactor-ng-controllers-templates-to-components.gif" />
+
+ see details here: https://teropa.info/blog/2015/10/18/refactoring-angular-apps-to-components.html
 
 2. **adding angular 1.x to react**
 (angular2react: https://github.com/coatue-oss/angular2react)
+<img src="./angular2react.png" />
+
+**caveat**: we have a massive angular codebase. will need to discuss how to gradually do that. 
 

@@ -34,9 +34,15 @@ Grunt and Webpack are not directly comparable, since they are technically differ
 
 ### A few things to consider: 
 1. How do we resolve dependencies? We don't have something similar to `require` or `import` in angular 1.x. This is a technical problem that needs more investigation. We can replace all `<script></script>` tags using regex, but there will probably a lot of broken dependencies. 
-2. Is it worth the time to migrate, if Grunt currently works well? Given that Grunt is a task runner with some build functionalities, maybe we can just integrate Webpack with Grunt? 
+
+Here's a blog post of [how someone did the migration](https://medium.com/appifycanada/migrate-to-webpack-from-grunt-bower-legacy-build-system-344526f47873)
+and [their dev process](https://github.com/icgc-dcc/dcc-portal/commit/6bd5a47dad0217ccaf8f76b5d6a24b455d568f65)
+
+2. Is it worth the time to migrate, if Grunt currently works well? Given that Grunt is a task runner with some build functionalities, maybe we can just integrate Webpack with Grunt?
+
 See a possible way of using Webpack with Grunt: https://github.com/webpack-contrib/grunt-webpack 
-3. An alternative: leave the existing apps the way they are, build new features on the front end with React. Each React app has its own Webpack configuration. To have the React apps communicate with the Angular apps, we can either wrap React components inside Angular apps or the other way around. 
+
+3. An **alternative**: leave the existing apps the way they are, build new features on the front end with React. Each React app has its own Webpack configuration. To have the React apps communicate with the Angular apps, we can either wrap React components inside Angular apps or the other way around. 
 
 ## Two possible solutions (re: althernative) 
 1. **adding react components in angular 1.x**

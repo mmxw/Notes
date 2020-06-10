@@ -1,4 +1,4 @@
-**Options:**
+## Options:
 
 - A Native Testing Library https://github.com/testing-library/native-testing-library
 - B React Native Testing Library https://github.com/callstack/react-native-testing-library
@@ -6,7 +6,7 @@
 
 A and B are similar creatures. They are both integration tests. 
 
-**A/B vs. C: **
+## A/B vs. C:
 
 - A/B runs tests from the perspective of how the users interact with the app, whereas C focuses more on the implementation logic. 
 - Therefore, as long as the UI doesn't change much, even when we refactored the code for better performance or using different logic, we won't have massive failing tests as what we see in C. 

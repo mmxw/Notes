@@ -37,5 +37,10 @@ Grunt and WebPack are not directly comparable, since they are technically differ
 - Is it worth the time to migrate, if Grunt currently works well? Given that Grunt is a task runner with some build functionalities, maybe we can just integrate WebPack with Grunt? 
 - An alternative: leave the existing apps the way they are, build new features on the front end with React. Each React app has its own WebPack configuration. To have the React apps communicate with the Angular apps, we can either wrap React components inside Angular apps or the other way around. 
 
+## Two possible solutions (re: althernative) 
+1. **adding react components in angular 1.x**
+ (react2angular: https://github.com/coatue-oss/react2angular)
 
+2. **adding angular 1.x to react**
+(angular2react: https://github.com/coatue-oss/angular2react)
 

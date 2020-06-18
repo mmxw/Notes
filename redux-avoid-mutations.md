@@ -1,3 +1,13 @@
+### Avoid mutating state objects in redux
+
+From Redux [docs](https://redux.js.org/introduction/three-principles): 
+> Changes are made with pure functions
+
+> To specify how the state tree is transformed by actions, you write pure reducers.
+
+> Reducers are just pure functions that take the previous state and an action, and return the next state. Remember to return new state objects, instead of mutating the previous state. You can start with a single reducer, and as your app grows, split it off into smaller reducers that manage specific parts of the state tree. Because reducers are just functions, you can control the order in which they are called, pass additional data, or even make reusable reducers for common tasks such as pagination.
+
+### Here are some ways of avoiding mutations of the previous state objects: 
 
 - use `deepFreeze` to freeze objects so that they cannot be mutated
 - use the following methods to avoid mutations of arrays or objects
@@ -19,13 +29,15 @@ arr = [0, 1]
 
 //for object mutations:
 const todo = {a: 1, b: 2}
-Object.assign({}, {b: 3, c: 4, d: 5}) // returns {a: 1, b: 3, c: 4, d: 5}
+✅Object.assign({}, {b: 3, c: 4, d: 5}) // returns {a: 1, b: 3, c: 4, d: 5}
 
-//but Object.assign() is not available on all browers (e.g., IE, baidu, qq, opera mini etc.), in this case, use spread operator to avoid website crashing
+//but Object.assign() is not available on all browers (e.g., IE, baidu, qq, opera mini etc.)
+//in this case, use spread operator to avoid website crashing
 
-{...todo, b: 3, c: 4, d: 5}
+✅{...todo, b: 3, c: 4, d: 5}
 
-deepFreeze(arr) 
+deepFreeze(arr)
+
 ```
 
-
+**Reference**: Dan Abramov's Redux [tutorial](https://egghead.io/courses/getting-started-with-redux) on egghead

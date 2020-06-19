@@ -1,11 +1,27 @@
 ### Avoid mutating state objects in redux
 
 From Redux [docs](https://redux.js.org/introduction/three-principles): 
-> Changes are made with pure functions
+> **Changes are made with pure functions**
 
 > To specify how the state tree is transformed by actions, you write pure reducers.
 
 > Reducers are just pure functions that take the previous state and an action, and return the next state. Remember to return new state objects, instead of mutating the previous state. You can start with a single reducer, and as your app grows, split it off into smaller reducers that manage specific parts of the state tree. Because reducers are just functions, you can control the order in which they are called, pass additional data, or even make reusable reducers for common tasks such as pagination.
+
+From [Idiomatic Redux: the history and implementation of React-Redux](https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/): 
+
+> **UI Updates Require Store Immutability**
+
+> We've already established that the Redux store will run all subscriber callbacks after every dispatched action, regardless of whether the state actually changed or not.
+
+> In order to implement efficient UI updates, React-Redux assumes you have updated the store state immutably, so it can use reference comparisons to determine if the state changed.
+
+> This occurs in three stages:
+
+> - When a connect wrapper component's subscriber callback runs, it first calls store.getState(), and checks to see if prevStoreState !== storeState. If the store state did not change by reference, then it will stop right there and bail out of any further update work, because it assumes that no other part of the store state changed.
+- If the root state has changed, the wrapper component then runs your mapState function, and does a "shallow equality" comparison between the current result and the last result. If any of the fields have changed by reference, then your component probably needs to be updated.
+- Assuming that there was some change in the mapState or mapDispatch results, the mergeProps() function is run to combine the stateProps from mapState, dispatchProps from mapDispatch, and ownProps from the wrapper component itself. A final check is done to see if the merged props result has changed since the last time, and if there's no change, the wrapped component will not be re-rendered.
+
+> Note: The root state comparison relies on a specific optimization in combineReducers, which checks to see if any state slices were changed while processing an action, and if not, returns the previous state object instead of a new one. This is a key reason why mutating your state results in your React UI components not updating!
 
 ### Here are some ways of avoiding mutations of the previous state objects: 
 
